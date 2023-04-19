@@ -1,0 +1,20 @@
+---
+extends:
+  - if-mib.yml
+  - system-mib.yml
+
+provider: kentik-gigamon
+
+sysobjectid:
+  - 1.3.6.1.4.1.26866.3.6 # GigaVUE-HC2
+
+metrics:
+  # A table of overall CPU statistics.
+  # Polled at 60s to support anomaly detection.
+  - MIB: GIGAMON-SNMP-MIB
+    symbols:
+      # The temperature Sensor values.
+      - name: temperatureSensors
+        OID: 1.3.6.1.4.1.26866.2.15.0
+        allow_duplicate: true
+        conversion: "regex: .* (?P<Intake>\\d+).* (?P<Exhaust>\\d+).* (?P<MainBoard>\\d+).* (?P<Card1>\\d+).* (?P<Card2>\\d+).* (?P<Card3>\\d+).* (?P<Card4>\\d+).* (?P<Card5>\\d+)"
