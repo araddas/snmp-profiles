@@ -1,6 +1,7 @@
 # Profile is intended to be used in an extends block
 # https://www.circitor.fr/Mibs/Html/E/ENTITY-SENSOR-MIB.php
 
+
 metrics:
 - MIB: ENTITY-SENSOR-MIB
   table:
